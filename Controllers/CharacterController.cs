@@ -21,19 +21,19 @@ namespace DotNet.Controllers
         }
 
         [HttpGet("getallCharacters")]
-        public async Task<ActionResult<ServiceResponse<List<AddCharacterDto>>>> Get()
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
             return Ok( await _characterService.GetAllCharacters());
         }
 
         [HttpGet("GetCharacterById")]
-        public async Task<ActionResult<ServiceResponse<AddCharacterDto>>> GetSingle(int Id)
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> GetSingle(int Id)
         {
             return Ok(await _characterService.GetCharacterById(Id));
         }
 
         [HttpPost("AddCharacter")]
-        public async Task<ActionResult<ServiceResponse<List<AddCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter){
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter){
                    
             return Ok(await _characterService.AddCharacters(newCharacter));
 
@@ -48,7 +48,7 @@ namespace DotNet.Controllers
 
         }
         [HttpDelete("DeleteCharacterById")]
-        public async Task<ActionResult<ServiceResponse<AddCharacterDto>>> DeleteCharacter (int Id)
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> DeleteCharacter (int Id)
         {
             var response = await _characterService.DeleteCharacters(Id);
             if(response.Data is null){
